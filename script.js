@@ -2,6 +2,7 @@ const possibleChoices = document.querySelectorAll("button");
 const computerChoiceDisplay = document.getElementById("computer-choice");
 const playerChoiceDisplay = document.getElementById("player-choice");
 const resultDisplay = document.getElementById("result");
+const reset = document.getElementById("reset");
 const playerScore = document.getElementById("player-score");
 const computerScore = document.getElementById("computer-score");
 const scoreboard = {
@@ -13,6 +14,7 @@ let computerChoice;
 let rounds = 0;
 const choices = ["Rock", "Paper", "Scissors"];
 
+//Clickable buttons for rock/paper/scissors starts the game and increases the number of rounds
 possibleChoices.forEach(possibleChoices => possibleChoices.addEventListener('click', (e) => {
     playerChoice = e.target.id
     rounds += 1;
@@ -23,12 +25,14 @@ possibleChoices.forEach(possibleChoices => possibleChoices.addEventListener('cli
     updateScore()
 }))
 
+//Random number generator that refers to an array of rock/paper/scissors for the com choice
 function getComputerChoice() {
     const randomNumber = Math.floor(Math.random() * choices.length);
     computerChoice = choices[randomNumber];
     return computerChoice;
 }
 
+//Possible results and return text declaring winners of rounds
 function getResult() {
     if(playerChoice === computerChoice){
         resultDisplay.innerHTML = "It's a tie!"
@@ -59,10 +63,27 @@ function getResult() {
     }
 }
 
-function updateScore(playerScore, computerScore) {
-    if(rounds == 5 && playerScore > computerScore){
-        resultDisplay.innerHTML = "After 5 rounds, you win!"
-    }else if(rounds == 5 && playerScore < computerScore){
-        resultDisplay.innerHTML = "After 5 rounds, you lose!"
+//After 5 rounds, a reset button and final winner are shown
+function updateScore() {
+    if(rounds === 5){
+    scoreboard.player > scoreboard.computer ? resultDisplay.innerHTML = "5 rounds played and you win!" : resultDisplay.innerHTML = "5 rounds played and you lose!" 
+    resetGame()
     }
 }
+
+//Clickable reset button
+function resetGame() {
+    reset.innerHTML = '<button onclick="replay()"> Play again? </button>';
+    }
+
+//Reset button function
+function replay(){
+        rounds = 0;
+        playerScore.innerHTML = " ";
+        computerScore.innerHTML = " ";
+        scoreboard.player = 0;
+        scoreboard.computer = 0;
+        console.log("test");
+        reset.innerHTML = " ";
+        resultDisplay.innerHTML = " ";
+    }
