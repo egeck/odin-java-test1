@@ -66,7 +66,8 @@ function getResult() {
 //After 5 rounds, a reset button and final winner are shown
 function updateScore() {
     if(rounds === 5){
-    scoreboard.player > scoreboard.computer ? resultDisplay.innerHTML = "5 rounds played and you win!" : resultDisplay.innerHTML = "5 rounds played and you lose!" 
+    scoreboard.player > scoreboard.computer ? resultDisplay.innerHTML = 
+    "5 rounds played and you win!" : resultDisplay.innerHTML = "5 rounds played and you lose!" 
     resetGame()
     }
 }
