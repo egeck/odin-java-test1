@@ -67,7 +67,7 @@ function getResult() {
 function updateScore() {
     if(rounds === 5){
     scoreboard.player > scoreboard.computer ? resultDisplay.innerHTML = 
-    "5 rounds played and you win!" : resultDisplay.innerHTML = "5 rounds played and you lose!" 
+        "5 rounds played and you win!" : resultDisplay.innerHTML = "5 rounds played and you lose!" 
     resetGame()
     }
 }
